@@ -1,4 +1,5 @@
-from random import shuffle
+import random
+# from random import shuffle
 
 
 class Sensors:
@@ -10,27 +11,29 @@ class Sensors:
         """sensor attributes for initializing """
         self.rate_sensitivity = rate_sensitivity
         self.sensor_type = sensor_type
-        self.installation_located =installation_located
+        self.installation_located = installation_located
         self.running = True
 
-    def shuffle_rate_sensivitivy(self):
-        return shuffle.self.rate_sensitivity  #Determine the sensitivity rate randomly
+    def shuffle_rate_sensitivity(self):
+        # return shuffle.rate_sensitivity  # Determine the sensitivity rate randomly
+        self.rate_sensitivity = random.randint(0, 9)
+        return self.rate_sensitivity
 
 
 class VoltageInput:
 
     def __init__(self, analog_pin):
         """Setting up the analog pin please"""
-        self.aio = self.Aio(analog_pin)
+        self.aio = self.aio(analog_pin)
         self.aio.setBit(12)
         print("check")
 
     @property
     def voltage(self):
         """Get the voltage value from the analog port"""
-        raw_value = self.aio.read()
-        return raw_value / 4095.0 * 5.0
+        raw_value = self.Aio.read()
         print("check")
+        return raw_value / 4095.0 * 5.0
 
     def Aio(self, analog_pin):
         pass
@@ -67,10 +70,7 @@ class DarknessSensor:
             self.ambient_light = self.light_normal
 
 
-class motion:
+class Motion:
 
     def __init__(self):
         pass
-
-
-
