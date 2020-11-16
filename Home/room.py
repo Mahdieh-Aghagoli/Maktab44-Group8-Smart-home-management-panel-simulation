@@ -11,8 +11,3 @@ class Room:
         self.sensor.append(other)
 
 
-# room = Room()
-# room.add_sensors(2)
-# room.add_sensors(3)
-#
-# print(room)
