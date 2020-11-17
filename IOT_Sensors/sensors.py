@@ -70,7 +70,82 @@ class DarknessSensor:
             self.ambient_light = self.light_normal
 
 
-class Motion:
+class Temperature(Sensors):
 
-    def __init__(self):
-        pass
+    def __init__(self, rate_sensitivity, sensor_type, installation_located):
+        """inheritance of Sensors class"""
+        super().__init__(rate_sensitivity, sensor_type, installation_located)
+
+
+    def shuffle_rate_sensivitivy(self):
+        self.rate_sensitivity = random.randint(0, 100)
+        return self.rate_sensitivity  #Determine the sensitivity rate randomly
+
+    def temp_control(self):
+        if self.installation_located == self.installation_located[1]: #if located was in kettle
+            if self.rate_sensitivity > 100:
+                print("The max tate of sensitivity of temperture is .{} so you must to turn it off".format(self.rate_sensitivity))
+            else:
+                print("every thing is safe")
+
+
+class Soundremote(Sensors):
+
+    def __init__(self, rate_sensitivity, sensor_type, installation_located):
+        """inheritance of Sensors class"""
+        super().__init__(rate_sensitivity, sensor_type, installation_located)
+
+
+    # def shuffle_rate_sensivitivy(self):
+    #     self.rate_sensitivity = random.randint(0, 100)
+    #     return self.rate_sensitivity  #Determine the sensitivity rate randomly
+
+    def play_music(self):
+
+        defaultDirectory = "Music/"
+        running = True
+
+        if not os.path.exists(defaultDirectory):
+            os.makedirs(defaultDirectory)
+            print("Empty folder...")
+            exit()
+
+        pygame.mixer.init()
+        # files names
+        playlist = [f for f in listdir(defaultDirectory) if isfile(join(defaultDirectory, f))]
+        # shuffle playlist
+        shuffle(playlist)
+        music = defaultDirectory + playlist.pop()
+        print(music)
+        pygame.mixer.music.load(music)
+        pygame.mixer.music.play()
+
+        while pygame.mixer.music.get_busy() or running:
+            if len(playlist) > 0:
+                music = defaultDirectory + playlist.pop()
+                print(music)
+                pygame.mixer.music.queue(music)
+            else:
+                continue
+
+    def alarm(self):
+        from datetime import datetime as dt
+        format = '%Y-%m-%d %H:%M:%S'
+        currtime = dt.now()
+        print("update time is {}".format(currtime))
+        alarmTime = dt.strptime('2020-11-17 14:05:00', format)
+        if alarmTime:
+            self.play_music()
+
+    def sound_control(self):
+        if self.installation_located == self.installation_located[0]: #if located was in radio
+            self.alarm()
+
+
+
+
+
+
+
+
+
