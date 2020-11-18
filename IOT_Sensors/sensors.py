@@ -1,17 +1,15 @@
 import os
 import random
-
 # from random import shuffle
 from os import listdir
 from os.path import isfile, join
-
 import pygame
 
 
 class Sensors:
     # rate_sensitivity = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    sensor_type = ['motion_sensor', 'temperature_sensor', 'DarknessSensor']
-    installation_located = ['remote_stuff', 'kettle', 'lamp']
+    sensor_type = ['sound_sensor', 'temperature_sensor', 'DarknessSensor']
+    installation_located = ['radio', 'kettle', 'lamp']
 
     def __init__(self, rate_sensitivity, sensor_type, installation_located):
         """sensor attributes for initializing """
