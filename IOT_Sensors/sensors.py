@@ -1,5 +1,11 @@
+import os
 import random
+
 # from random import shuffle
+from os import listdir
+from os.path import isfile, join
+
+import pygame
 
 
 class Sensors:
@@ -76,53 +82,53 @@ class Temperature(Sensors):
         """inheritance of Sensors class"""
         super().__init__(rate_sensitivity, sensor_type, installation_located)
 
-
-    def shuffle_rate_sensivitivy(self):
+    def shuffle_rate_sensitivity(self):
         self.rate_sensitivity = random.randint(0, 100)
-        return self.rate_sensitivity  #Determine the sensitivity rate randomly
+        return self.rate_sensitivity  # Determine the sensitivity rate randomly
 
     def temp_control(self):
-        if self.installation_located == self.installation_located[1]: #if located was in kettle
+        if self.installation_located == self.installation_located[1]:  # if located was in kettle
             if self.rate_sensitivity > 100:
-                print("The max tate of sensitivity of temperture is .{} so you must to turn it off".format(self.rate_sensitivity))
+                print("The max tate of sensitivity of temperature is .{} so you must to turn it off".format(
+                    self.rate_sensitivity))
             else:
                 print("every thing is safe")
 
 
-class Soundremote(Sensors):
+class SoundRemote(Sensors):
 
     def __init__(self, rate_sensitivity, sensor_type, installation_located):
         """inheritance of Sensors class"""
         super().__init__(rate_sensitivity, sensor_type, installation_located)
 
-
-    # def shuffle_rate_sensivitivy(self):
+    # def shuffle_rate_sensitivity(self):
     #     self.rate_sensitivity = random.randint(0, 100)
     #     return self.rate_sensitivity  #Determine the sensitivity rate randomly
 
-    def play_music(self):
+    @staticmethod
+    def play_music():
 
-        defaultDirectory = "Music/"
+        default_directory = "Music/"
         running = True
 
-        if not os.path.exists(defaultDirectory):
-            os.makedirs(defaultDirectory)
+        if not os.path.exists(default_directory):
+            os.makedirs(default_directory)
             print("Empty folder...")
             exit()
 
         pygame.mixer.init()
         # files names
-        playlist = [f for f in listdir(defaultDirectory) if isfile(join(defaultDirectory, f))]
+        playlist = [f for f in listdir(default_directory) if isfile(join(default_directory, f))]
         # shuffle playlist
-        shuffle(playlist)
-        music = defaultDirectory + playlist.pop()
+        random.shuffle(playlist)
+        music = default_directory + playlist.pop()
         print(music)
         pygame.mixer.music.load(music)
         pygame.mixer.music.play()
 
         while pygame.mixer.music.get_busy() or running:
             if len(playlist) > 0:
-                music = defaultDirectory + playlist.pop()
+                music = default_directory + playlist.pop()
                 print(music)
                 pygame.mixer.music.queue(music)
             else:
@@ -131,21 +137,12 @@ class Soundremote(Sensors):
     def alarm(self):
         from datetime import datetime as dt
         format = '%Y-%m-%d %H:%M:%S'
-        currtime = dt.now()
-        print("update time is {}".format(currtime))
-        alarmTime = dt.strptime('2020-11-17 14:05:00', format)
-        if alarmTime:
+        current_time = dt.now()
+        print("update time is {}".format(current_time))
+        alarm_time = dt.strptime('2020-11-17 14:05:00', format)
+        if alarm_time:
             self.play_music()
 
     def sound_control(self):
-        if self.installation_located == self.installation_located[0]: #if located was in radio
+        if self.installation_located == self.installation_located[0]:  # if located was in radio
             self.alarm()
-
-
-
-
-
-
-
-
-
