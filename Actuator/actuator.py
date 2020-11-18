@@ -1,32 +1,30 @@
-import random
 from datetime import datetime
+from IOT_Sensors.sensors import Temperature, SoundRemote, DarknessSensor
 
 ''' when sensors added, time, temperature and etc must import from sensors 
 and i must add which actuator is doing a task for a specific sensor'''
 
 
-class Actuator:
+class Actuator(Temperature, SoundRemote, DarknessSensor):
     time = datetime.now().hour
+    actuator_type = ['light_power', 'boiler', 'pull_curtain', 'fire_extinguisher']
 
-    def __init__(self, sensors, location, actuator_type):
-        self.actuator_type = actuator_type
-        self.sensors = sensors
-        self.location = location
-
-    def lights_on(self):
-        pass
+    def light_power(self):  # a function for turning on the lights in different situations
+        DarknessSensor.measure_light("sth. must be here!")
+        '''code for turning on the light when its dark outside'''
 
     '''i need a motivation sensor here cause if i want to turn the lights on, i need to know if someone came inside'''
 
-    def boiler(self):
-        temperature = random.randint(0, 100)
-        if Actuator.time == 7 and temperature < 100:
-            print("boiler activated")
+    def boiler(self):  # a function for start boiling the water at 7 o'clock
+        current_time = datetime.now().hour
+        if current_time == 7 and self.rate_sensitivity < 100:
+            print("Water will start boiling")
 
     @staticmethod
-    def pull_curtain():
-        if Actuator.time == 7:
-            print("c")
+    def pull_curtain():  # a function for pulling the curtain at 7 o'clock
+        current_time = datetime.now().hour
+        if current_time == 7:
+            print("Good Morning!")
 
     def fire_extinguisher(self):
         pass
