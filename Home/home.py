@@ -10,4 +10,11 @@ class Home:
         sensors in your home : {}
         """.format(self.rooms, self.sensors)
 
+    @staticmethod
+    def home_definition():
+        pass
 
+    @staticmethod
+    def home_db():
+        file = r"home_info.txt"
+        return file

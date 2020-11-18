@@ -10,4 +10,11 @@ class Room:
     def add_sensors(self, other):
         self.sensor.append(other)
 
+    @staticmethod
+    def rooms_definition(number, num_of_sensors):
+        room = Room(number)
 
+        for i in range(num_of_sensors):
+            pass  # here we should get sensors then use add_sensors function to finally have our room defined
+
+        return room

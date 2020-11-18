@@ -6,12 +6,12 @@ def login():
     password = input("Please enter your password : ")
 
 
-def rooms_definition():
-    pass
+# def rooms_definition():
+#     pass
 
 
-def home_definition():
-    pass
+# def home_definition():
+#     pass
 
 
 def menu():
@@ -33,6 +33,6 @@ def menu():
     else:
         print("no operation")
 
+
 def sign_up():
     pass
-
