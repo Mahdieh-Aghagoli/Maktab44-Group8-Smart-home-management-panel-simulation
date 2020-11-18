@@ -8,7 +8,6 @@ from os.path import isfile, join
 import pygame
 
 
-
 class Sensors:
     # rate_sensitivity = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     sensor_type = ['motion_sensor', 'temperature_sensor', 'DarknessSensor']
@@ -21,12 +20,10 @@ class Sensors:
         self.installation_located = installation_located
         self.running = True
 
-
     def shuffle_rate_sensitivity(self):
         # return shuffle.rate_sensitivity  # Determine the sensitivity rate randomly
         self.rate_sensitivity = random.randint(0, 9)
         return self.rate_sensitivity
-
 
 
 class VoltageInput:
@@ -79,30 +76,18 @@ class DarknessSensor:
             self.ambient_light = self.light_normal
 
 
-
 class Temperature(Sensors):
 
     def __init__(self, rate_sensitivity, sensor_type, installation_located):
         """inheritance of Sensors class"""
         super().__init__(rate_sensitivity, sensor_type, installation_located)
 
-
-    def shuffle_rate_sensivitivy(self):
+    def shuffle_rate_sensitivity(self):
         self.rate_sensitivity = random.randint(0, 100)
-        return self.rate_sensitivity  #Determine the sensitivity rate randomly
+        return self.rate_sensitivity  # Determine the sensitivity rate randomly
 
     def temp_control(self):
         if self.installation_located == self.installation_located[1]:
-            if self.rate_sensitivity > 100:
-                print("The max tate of sensitivity of temperture is .{} so you must to turn it off".format(self.rate_sensitivity))
-            else:
-                print("every thing is safe")
-
-
-
-
-    def temp_control(self):
-        if self.installation_located == self.installation_located[1]:  # if located was in kettle
             if self.rate_sensitivity > 100:
                 print("The max tate of sensitivity of temperature is .{} so you must to turn it off".format(
                     self.rate_sensitivity))
