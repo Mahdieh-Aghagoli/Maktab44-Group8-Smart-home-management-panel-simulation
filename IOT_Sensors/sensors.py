@@ -1,4 +1,12 @@
-from random import shuffle, random
+import os
+import random
+
+# from random import shuffle
+from os import listdir
+from os.path import isfile, join
+
+import pygame
+
 
 
 class Sensors:
@@ -10,28 +18,31 @@ class Sensors:
         """sensor attributes for initializing """
         self.rate_sensitivity = rate_sensitivity
         self.sensor_type = sensor_type
-        self.installation_located =installation_located
+        self.installation_located = installation_located
         self.running = True
 
-    def shuffle_rate_sensivitivy(self):
+
+    def shuffle_rate_sensitivity(self):
+        # return shuffle.rate_sensitivity  # Determine the sensitivity rate randomly
         self.rate_sensitivity = random.randint(0, 9)
-        return self.rate_sensitivity  #Determine the sensitivity rate randomly
+        return self.rate_sensitivity
+
 
 
 class VoltageInput:
 
     def __init__(self, analog_pin):
         """Setting up the analog pin please"""
-        self.aio = self.Aio(analog_pin)
+        self.aio = self.aio(analog_pin)
         self.aio.setBit(12)
         print("check")
 
     @property
     def voltage(self):
         """Get the voltage value from the analog port"""
-        raw_value = self.aio.read()
-        return raw_value / 4095.0 * 5.0
+        raw_value = self.Aio.read()
         print("check")
+        return raw_value / 4095.0 * 5.0
 
     def Aio(self, analog_pin):
         pass
@@ -68,9 +79,11 @@ class DarknessSensor:
             self.ambient_light = self.light_normal
 
 
-class temperature(Sensors):
+
+class Temperature(Sensors):
 
     def __init__(self, rate_sensitivity, sensor_type, installation_located):
+        """inheritance of Sensors class"""
         super().__init__(rate_sensitivity, sensor_type, installation_located)
 
 
@@ -88,4 +101,63 @@ class temperature(Sensors):
 
 
 
+    def temp_control(self):
+        if self.installation_located == self.installation_located[1]:  # if located was in kettle
+            if self.rate_sensitivity > 100:
+                print("The max tate of sensitivity of temperature is .{} so you must to turn it off".format(
+                    self.rate_sensitivity))
+            else:
+                print("every thing is safe")
 
+
+class SoundRemote(Sensors):
+
+    def __init__(self, rate_sensitivity, sensor_type, installation_located):
+        """inheritance of Sensors class"""
+        super().__init__(rate_sensitivity, sensor_type, installation_located)
+
+    # def shuffle_rate_sensitivity(self):
+    #     self.rate_sensitivity = random.randint(0, 100)
+    #     return self.rate_sensitivity  #Determine the sensitivity rate randomly
+
+    @staticmethod
+    def play_music():
+
+        default_directory = "Music/"
+        running = True
+
+        if not os.path.exists(default_directory):
+            os.makedirs(default_directory)
+            print("Empty folder...")
+            exit()
+
+        pygame.mixer.init()
+        # files names
+        playlist = [f for f in listdir(default_directory) if isfile(join(default_directory, f))]
+        # shuffle playlist
+        random.shuffle(playlist)
+        music = default_directory + playlist.pop()
+        print(music)
+        pygame.mixer.music.load(music)
+        pygame.mixer.music.play()
+
+        while pygame.mixer.music.get_busy() or running:
+            if len(playlist) > 0:
+                music = default_directory + playlist.pop()
+                print(music)
+                pygame.mixer.music.queue(music)
+            else:
+                continue
+
+    def alarm(self):
+        from datetime import datetime as dt
+        format = '%Y-%m-%d %H:%M:%S'
+        current_time = dt.now()
+        print("update time is {}".format(current_time))
+        alarm_time = dt.strptime('2020-11-17 14:05:00', format)
+        if alarm_time:
+            self.play_music()
+
+    def sound_control(self):
+        if self.installation_located == self.installation_located[0]:  # if located was in radio
+            self.alarm()
