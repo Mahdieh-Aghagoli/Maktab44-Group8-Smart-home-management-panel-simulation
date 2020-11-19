@@ -87,10 +87,9 @@ class Temperature(Sensors):
     def temp_control(self):
         if self.installation_located == self.installation_located[1]:
             if self.rate_sensitivity > 100:
-                print("The max tate of sensitivity of temperature is .{} so you must to turn it off".format(
-                    self.rate_sensitivity))
+                True
             else:
-                print("every thing is safe")
+                False
 
 
 class SoundRemote(Sensors):
