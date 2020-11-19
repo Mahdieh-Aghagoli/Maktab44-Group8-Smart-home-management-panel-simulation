@@ -1,17 +1,4 @@
-from Home import room
-
-
-def login():
-    user_name = input("Please enter your name : ")
-    password = input("Please enter your password : ")
-
-
-# def rooms_definition():
-#     pass
-
-
-# def home_definition():
-#     pass
+from Home import room, home
 
 
 def menu():
@@ -36,3 +23,8 @@ def menu():
 
 def sign_up():
     pass
+
+
+def login():
+    user_name = input("Please enter your name : ")
+    password = input("Please enter your password : ")
