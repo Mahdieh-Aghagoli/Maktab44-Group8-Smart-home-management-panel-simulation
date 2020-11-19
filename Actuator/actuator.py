@@ -1,8 +1,5 @@
 from datetime import datetime
-from IOT_Sensors.sensors import Temperature, SoundRemote, DarknessSensor
-
-''' when sensors added, time, temperature and etc must import from sensors 
-and i must add which actuator is doing a task for a specific sensor'''
+from IOT_Sensors.sensors import Temperature, SoundRemote, DarknessSensor, Sensors
 
 
 class Actuator(Temperature, SoundRemote, DarknessSensor):
@@ -10,26 +7,28 @@ class Actuator(Temperature, SoundRemote, DarknessSensor):
     actuator_type = ['light_power', 'boiler', 'pull_curtain', 'fire_extinguisher']
 
     def light_power(self):  # a function for turning on the lights in different situations
-        if DarknessSensor.measure_light():
-            print("please turn on the lamp {}".format(installation_located[2]))
+        DarknessSensor.measure_light(self)
+        if True:
+            print("Lights on".format(Sensors.installation_located[2]))
         else:
-            print("bela bela bela")
-        '''code for turning on the light when its dark outside'''
-
-    '''i need a motivation sensor here cause if i want to turn the lights on, i need to know if someone came inside'''
+            print("do nothing")
 
     def boiler(self):  # a function for start boiling the water at 7 o'clock
-        current_time = datetime.now().hour
-        if current_time == 7 and self.rate_sensitivity < 100:
-            print("Water will start boiling")
+        Temperature.shuffle_rate_sensitivity(self)
+        Temperature.temp_control(self)
+        if True:
+            print("Water will start boiling".format(Sensors.installation_located))
+        else:
+            print("do nothing")
 
-    @staticmethod
-    def pull_curtain():  # a function for pulling the curtain at 7 o'clock
-        current_time = datetime.now().hour
-        if current_time == 7:
-            print("Good Morning!")
-
-    def fire_extinguisher(self):
-        pass
-
-    '''need smoke sensor'''
+    def alarming(self):
+        SoundRemote.alarm(self)
+        if True:
+            print("alarm {}".format(Sensors.installation_located[0]))
+        else:
+            print("do nothing")
+        SoundRemote.sound_control(self)
+        if True:
+            print("this sensor is running {}".format(Sensors.installation_located))
+        else:
+            print("do nothing")
