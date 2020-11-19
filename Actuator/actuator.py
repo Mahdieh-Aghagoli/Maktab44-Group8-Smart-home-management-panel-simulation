@@ -10,7 +10,10 @@ class Actuator(Temperature, SoundRemote, DarknessSensor):
     actuator_type = ['light_power', 'boiler', 'pull_curtain', 'fire_extinguisher']
 
     def light_power(self):  # a function for turning on the lights in different situations
-        DarknessSensor.measure_light("sth. must be here!")
+        if DarknessSensor.measure_light():
+            print("please turn on the lamp {}".format(installation_located[2]))
+        else:
+            print("bela bela bela")
         '''code for turning on the light when its dark outside'''
 
     '''i need a motivation sensor here cause if i want to turn the lights on, i need to know if someone came inside'''

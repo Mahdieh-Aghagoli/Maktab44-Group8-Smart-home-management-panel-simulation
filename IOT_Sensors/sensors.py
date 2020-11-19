@@ -86,10 +86,10 @@ class Temperature(Sensors):
 
     def temp_control(self):
         if self.installation_located == self.installation_located[1]:
-            if self.rate_sensitivity > 100:
-                True
+            if self.rate_sensitivity > 100 and datetime.now().hour:
+                return True
             else:
-                False
+                return False
 
 
 class SoundRemote(Sensors):
