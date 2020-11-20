@@ -76,5 +76,5 @@ class Room:
         return room
 
 
-a = Room.rooms_definition(2, 3)
-print(a.sensor)
+# a = Room.rooms_definition(2, 3)
+# print(a.sensor)

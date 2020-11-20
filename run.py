@@ -1,4 +1,7 @@
+from Home import home
 from Home import room
+import csv
+from hashlib import sha256
 
 
 def login():
@@ -25,14 +28,22 @@ def menu():
     user_choice = int(input())
 
     if user_choice == 1:
-        pass
+        sign_up()
 
     elif user_choice == 2:
-        pass
+        login()
 
     else:
         print("no operation")
 
 
 def sign_up():
-    pass
+    new_home = home.Home.home_definition()
+    password = sha256(new_home.password.encode()).hexdigest()
+
+
+
+
+def main():
+    while True:
+        pass
