@@ -1,3 +1,6 @@
+import logging
+
+
 class Room:
     def __init__(self, room_number):
         logging.basicConfig(filename='IOT.log', filemode='w', format='%(levelname)s - %(asctime)s - %(message)s',
@@ -12,7 +15,7 @@ class Room:
         try:
             return "{}".format(self.sensor)
         except TypeError:
-            logging.basicConfig(filename='IOT.log', filemode='w',format='%(levelname)s - %(asctime)s - %(message)s',
+            logging.basicConfig(filename='IOT.log', filemode='w', format='%(levelname)s - %(asctime)s - %(message)s',
                                 level=logging.WARNING)
             logging.warning('write sth !')
             return ""
