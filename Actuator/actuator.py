@@ -4,7 +4,7 @@ from IOT_Sensors.sensors import Temperature, SoundRemote, DarknessSensor, Sensor
 
 class Actuator(Temperature, SoundRemote, DarknessSensor):
     time = datetime.now().hour
-    actuator_type = ['light power', 'boiler', 'alarm']
+    actuator_types = ['1.light power', '2.boiler', '3.alarm']
 
     def __init__(self, actuator_type, rate_sensitivity, sensor_type, installation_located):
         super().__init__(rate_sensitivity, sensor_type, installation_located)
@@ -38,11 +38,11 @@ class Actuator(Temperature, SoundRemote, DarknessSensor):
             print("do nothing")
 
     def actuator(self):
-        if self.actuator_type == 0:
+        if self.actuator_type == 1:
             Actuator.light_power(self)
-        elif self.actuator_type == 1:
-            Actuator.boiler(self)
         elif self.actuator_type == 2:
+            Actuator.boiler(self)
+        elif self.actuator_type == 3:
             Actuator.alarming(self)
         else:
             print("This actuator is not installed!")
