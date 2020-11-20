@@ -1,5 +1,8 @@
 class Room:
     def __init__(self, room_number):
+        logging.basicConfig(filename='IOT.log', filemode='w', format='%(levelname)s - %(asctime)s - %(message)s',
+                            level=logging.INFO)
+        logging.info('Rooms and sensors!')
         sensor = []
         self.sensor = sensor
         self.room_number = room_number
@@ -12,6 +15,9 @@ class Room:
 
     @staticmethod
     def rooms_definition(number, num_of_sensors):
+        logging.basicConfig(filename='IOT.log', filemode='w', format='%(levelname)s - %(asctime)s - %(message)s',
+                            level=logging.INFO)
+        logging.info('Definition of rooms and number of rooms!')
         room = Room(number)
 
         for i in range(num_of_sensors):
