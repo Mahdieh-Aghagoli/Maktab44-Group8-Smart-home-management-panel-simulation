@@ -13,7 +13,7 @@ class Actuator(Temperature, SoundRemote, DarknessSensor):
     def light_power(self):  # a function for turning on the lights in different situations
         DarknessSensor.measure_light(self)
         if True:
-            print("Lights on".format(Sensors.installation_located[2]))
+            print("Lights on; {}".format(Sensors.installation_located[2]))
         else:
             print("do nothing")
 
@@ -21,18 +21,18 @@ class Actuator(Temperature, SoundRemote, DarknessSensor):
         Temperature.shuffle_rate_sensitivity(self)
         Temperature.temp_control(self)
         if True:
-            print("Water will start boiling".format(Sensors.installation_located))
+            print("Water will start boiling; {}".format(Sensors.installation_located))
         else:
             print("do nothing")
 
     def alarming(self):
         SoundRemote.alarm(self)
         if True:
-            print("alarm {}".format(Sensors.installation_located[0]))
+            print("alarm; {}".format(Sensors.installation_located[0]))
         else:
             print("do nothing")
         SoundRemote.sound_control(self)
         if True:
-            print("this sensor is running {}".format(Sensors.installation_located))
+            print("this sensor is running; {}".format(Sensors.installation_located))
         else:
             print("do nothing")
