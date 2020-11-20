@@ -25,7 +25,7 @@ class Actuator(Temperature, SoundRemote, DarknessSensor):
         else:
             print("do nothing")
 
-    def alarming(self):
+    def alarming(self):  # a function for alarming
         SoundRemote.alarm(self)
         if True:
             print("alarm; {}".format(Sensors.installation_located[0]))
