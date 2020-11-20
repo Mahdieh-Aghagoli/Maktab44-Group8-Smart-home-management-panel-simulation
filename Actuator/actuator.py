@@ -6,6 +6,10 @@ class Actuator(Temperature, SoundRemote, DarknessSensor):
     time = datetime.now().hour
     actuator_type = ['light_power', 'boiler', 'pull_curtain', 'fire_extinguisher']
 
+    def __init__(self, actuator_type, rate_sensitivity, sensor_type, installation_located):
+        super().__init__(rate_sensitivity, sensor_type, installation_located)
+        self.actuator_type = actuator_type
+
     def light_power(self):  # a function for turning on the lights in different situations
         DarknessSensor.measure_light(self)
         if True:
