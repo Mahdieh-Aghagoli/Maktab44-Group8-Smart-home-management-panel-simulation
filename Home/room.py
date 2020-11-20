@@ -7,10 +7,20 @@ class Room:
         self.sensor = sensor
         self.room_number = room_number
 
+    @property
     def __str__(self):
-        return "{}".format(self.sensor)
+        try:
+            return "{}".format(self.sensor)
+        except TypeError:
+            logging.basicConfig(filename='IOT.log', filemode='w',format='%(levelname)s - %(asctime)s - %(message)s',
+                                level=logging.WARNING)
+            logging.warning('write sth !')
+            return ""
 
     def add_sensors(self, other):
+        logging.basicConfig(filename='IOT.log', filemode='w', format='%(levelname)s - %(asctime)s - %(message)s',
+                            level=logging.INFO)
+        logging.info('Added users!')
         self.sensor.append(other)
 
     @staticmethod
