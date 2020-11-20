@@ -13,6 +13,9 @@ class Sensors:
     installation_located = ['radio', 'kettle', 'lamp']
 
     def __init__(self, rate_sensitivity, sensor_type, installation_located):
+        logging.basicConfig(filename='IOT.log', filemode='w', format='%(levelname)s - %(asctime)s - %(message)s',
+                            level=logging.INFO)
+        logging.info("Sensors information!")
         """sensor attributes for initializing """
         self.rate_sensitivity = rate_sensitivity
         self.sensor_type = sensor_type
@@ -45,6 +48,9 @@ class VoltageInput:
 
 
 class DarknessSensor:
+    logging.basicConfig(filename='IOT.log', filemode='w', format='%(levelname)s - %(asctime)s - %(message)s',
+                        level=logging.INFO)
+    logging.info("Get information about Darkness sensor!")
     # Light level descriptions
     light_extremely_dark = "extremely_dark"
     light_very_dark = "very_dark"
@@ -56,6 +62,9 @@ class DarknessSensor:
     dark_max_voltage = 4.0
 
     def __init__(self, analog_pin):
+        logging.basicConfig(filename='IOT.log', filemode='w', format='%(levelname)s - %(asctime)s - %(message)s',
+                            level=logging.INFO)
+        logging.info("Get input voltage!")
         """Setting up the default values of the sensor reading"""
         self.voltage_input = VoltageInput(analog_pin)
         self.voltage = 0.0
