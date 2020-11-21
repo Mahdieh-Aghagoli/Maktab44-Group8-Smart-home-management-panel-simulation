@@ -1,6 +1,7 @@
 from Home import home
 import csv
 from hashlib import sha256
+from Actuator.actuator import MusicActuator, TempActuator, DarknessActuator
 
 
 def menu():
@@ -25,24 +26,15 @@ def menu():
 
 menu()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# scenario
+obj1 = MusicActuator
+obj1.activate()
+print("\n")
+obj2 = TempActuator
+obj2.activate()
+print("\n")
+obj3 = DarknessActuator
+obj3.activate()
 
 # def sign_up():
 #     """
