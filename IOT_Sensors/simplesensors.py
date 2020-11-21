@@ -87,11 +87,9 @@ class SoundRemote(Sensors):
         self.type_of_sensor = "SoundRemote"
         self.time = datetime.now()
 
-    @staticmethod
-    def time_comparison():
-        now = datetime.now()
-        music_time1 = now.replace(hour=18, minute=0)
-        music_time2 = now.replace(hour=18, minute=30)
+    def time_comparison(self, now):
+        music_time1 = self.time.replace(hour=18, minute=0)
+        music_time2 = self.time.replace(hour=18, minute=30)
         if now.hour == music_time1.hour and music_time1.minute <= now.minute <= music_time2.minute:
             return True
         else:
