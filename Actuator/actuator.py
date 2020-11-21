@@ -1,5 +1,5 @@
 from datetime import datetime
-from IOT_Sensors.sensors import Temperature, SoundRemote, DarknessSensor, Sensors
+from IOT_Sensors.simplesensors import Temperature, SoundRemote, DarknessSensor, Sensors
 
 
 class Actuator(Temperature, SoundRemote, DarknessSensor):
