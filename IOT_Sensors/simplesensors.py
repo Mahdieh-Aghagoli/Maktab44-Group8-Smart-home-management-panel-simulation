@@ -53,6 +53,12 @@ class DarknessSensor(Sensors):
         if self.shuffle_rate_sensitivity() == 1 or self.shuffle_rate_sensitivity() == 2:
             return True
 
+    @staticmethod
+    def check():
+        rand_darkness = random.choice(DarknessSensor.darkness)
+        if rand_darkness == 1 or rand_darkness == 2:
+            return True
+
 
 class Temperature(Sensors):
     temperature = [1, 2, 3, 4, 5]
@@ -78,6 +84,13 @@ class Temperature(Sensors):
             return "warm"
         if self.shuffle_rate_sensitivity() == 5:
             return "hot"
+
+    @staticmethod
+    def check():
+        temp = random.randint(0, 100)
+        if temp < 100:
+            print("temperature is {}".format(temp))
+            return True
 
 
 class SoundRemote(Sensors):
