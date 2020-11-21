@@ -12,11 +12,15 @@ class Home:
         self.sensors = sensors  # i think there is no need for this!
         self.password = password
 
+    @property
     def __str__(self):
         return """
         your rooms : {}
         sensors in your home : {}
         """.format(self.rooms, self.sensors)
+        logging.basicConfig(filename='IOT.log', filemode='w', format='%(levelname)s - %(asctime)s - %(message)s',
+                            level=logging.INFO)
+        logging.info(' !')
 
     @staticmethod
     def home_definition():
@@ -43,3 +47,6 @@ class Home:
 # h = Home.home_definition()
 # room1 = h.rooms[0]
 # print(room1.sensor)
+=======
+        file = r"home_info.txt"
+        return file
