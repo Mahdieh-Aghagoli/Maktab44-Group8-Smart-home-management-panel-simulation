@@ -31,6 +31,8 @@ class Sensors:
 
 class VoltageInput:
 
+    aio: object
+
     def __init__(self, analog_pin):
         """Setting up the analog pin please"""
         self.aio = self.aio(analog_pin)
@@ -90,6 +92,8 @@ class Temperature(Sensors):
     def __init__(self, rate_sensitivity, sensor_type, installation_located):
         """inheritance of Sensors class"""
         super().__init__(rate_sensitivity, sensor_type, installation_located)
+        self.sensor_type = sensor_type
+        
 
     def shuffle_rate_sensitivity(self):
         self.rate_sensitivity = random.randint(0, 100)
@@ -107,7 +111,7 @@ class SoundRemote(Sensors):
 
     def __init__(self, rate_sensitivity, sensor_type, installation_located):
         """inheritance of Sensors class"""
-        super().__init__(rate_sensitivity, sensor_type, installation_located)
+        super().__init__(rate_sensitivity)
 
     # def shuffle_rate_sensitivity(self):
     #     self.rate_sensitivity = random.randint(0, 100)
@@ -154,3 +158,17 @@ class SoundRemote(Sensors):
     def sound_control(self):
         if self.installation_located == self.installation_located[0]:  # if located was in radio
             self.alarm()
+
+    @staticmethod
+    def time_comparison():
+        now = datetime.now()
+        music_time1 = now.replace(hour=18, minute=0)
+        music_time2 = now.replace(hour=18, minute=30)
+        if now.hour == music_time1.hour and music_time1.minute <= now.minute <= music_time2.minute:
+            return True
+        else:
+            return False
+
+#SoundRemote.play_music()
+a = SoundRemote.time_comparison()
+print(a)
