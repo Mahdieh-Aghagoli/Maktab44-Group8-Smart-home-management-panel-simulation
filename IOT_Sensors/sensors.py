@@ -13,14 +13,14 @@ class Sensors:
     sensor_type = ['sound_sensor', 'temperature_sensor', 'DarknessSensor']
     installation_located = ['radio', 'kettle', 'lamp']
 
-    def __init__(self, rate_sensitivity, sensor_type, installation_located):
+    def __init__(self, rate_sensitivity):
         logging.basicConfig(filename='IOT.log', filemode='w', format='%(levelname)s - %(asctime)s - %(message)s',
                             level=logging.INFO)
         logging.info("Sensors information!")
         """sensor attributes for initializing """
         self.rate_sensitivity = rate_sensitivity
-        self.sensor_type = sensor_type
-        self.installation_located = installation_located
+        self.sensor_type = []
+        self.installation_located = []
         self.running = True
 
     def shuffle_rate_sensitivity(self):
