@@ -1,0 +1,12 @@
+41e6c3fd0321b89a9dca003ffa9ad7f9448a3f7d0498c0136878bfd784591a97,36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068,"{1: ['DarknessSensor', 'TemperatureSensor', 'SoundSensor'], 2: ['DarknessSensor', 'SoundSensor'], 3: ['DarknessSensor']}","
+        your rooms : [<room.Room object at 0x0000025DEA400CA0>, <room.Room object at 0x0000025DEA400E80>, <room.Room object at 0x0000025DEA400EE0>]
+        sensors in your home : [<room.Room object at 0x0000025DEA400CA0>, <room.Room object at 0x0000025DEA400E80>, <room.Room object at 0x0000025DEA400EE0>]
+        "
+23668c372ef96691979847acaffac356c3e14ad15c16a14178b9ed67dafbdf5d,36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068,"{1: ['DarknessSensor', 'TemperatureSensor', 'SoundSensor'], 2: ['TemperatureSensor'], 3: ['DarknessSensor', 'TemperatureSensor', 'SoundSensor'], 4: ['DarknessSensor', 'SoundSensor']}","
+        your rooms : [<room.Room object at 0x000001E5B068E2B0>, <room.Room object at 0x000001E5B068E490>, <room.Room object at 0x000001E5B068E4F0>, <room.Room object at 0x000001E5B068E550>]
+        sensors in your home : [<room.Room object at 0x000001E5B068E2B0>, <room.Room object at 0x000001E5B068E490>, <room.Room object at 0x000001E5B068E4F0>, <room.Room object at 0x000001E5B068E550>]
+        "
+9bb840df7f699d6547f49fd6f9ed17b2d9dd34148f0b01e798d7c51da897ea1a,1a0f564ddc6039457b2fb26b3d6a316c15eba20a886449847c3210c35821a693,"{1: ['DarknessSensor', 'SoundSensor'], 2: ['TemperatureSensor'], 3: ['SoundSensor']}","
+        your rooms : [<room.Room object at 0x0366F088>, <room.Room object at 0x0366F178>, <room.Room object at 0x0366F1A8>]
+        sensors in your home : [<room.Room object at 0x0366F088>, <room.Room object at 0x0366F178>, <room.Room object at 0x0366F1A8>]
+        "
